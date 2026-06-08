@@ -22,13 +22,13 @@ python -m pip install -e .[dev]
 ## Usage
 
 ```bash
-schconv /tmp/workspace/BilGroves/SchConvTest/Test-sch.pdf --pretty
+schconv path/to/schematic.pdf --pretty
 ```
 
 Write to a file:
 
 ```bash
-schconv /tmp/workspace/BilGroves/SchConvTest/Test-sch.pdf --pretty -o /tmp/result.json
+schconv path/to/schematic.pdf --pretty -o path/to/result.json
 ```
 
 ## Test

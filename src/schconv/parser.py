@@ -36,6 +36,12 @@ _STOP_WORDS = {
     "variant",
 }
 
+_MIN_TITLE_ALPHA_CHARS = 7
+_MIN_TERM_TOKEN_LENGTH = 3
+_TERM_PATTERN = re.compile(
+    rf"[A-Za-z][A-Za-z0-9_/-]{{{_MIN_TERM_TOKEN_LENGTH - 1},}}"
+)
+
 
 def _clean_line(line: str) -> str:
     return re.sub(r"\s+", " ", line).strip()
@@ -53,7 +59,7 @@ def _extract_sheet_title(lines: list[str]) -> str | None:
         if line.isupper() and len(line.split()) <= 2:
             continue
         alpha = sum(char.isalpha() for char in line)
-        if alpha < 7:
+        if alpha < _MIN_TITLE_ALPHA_CHARS:
             continue
         if re.search(r"[a-z]", line) and len(line) <= 60:
             candidates.append(line)
@@ -65,7 +71,7 @@ def _extract_sheet_title(lines: list[str]) -> str | None:
 def _top_terms(lines: list[str], limit: int = 8) -> list[str]:
     counts: Counter[str] = Counter()
     for line in lines:
-        for token in re.findall(r"[A-Za-z][A-Za-z0-9_/-]{2,}", line):
+        for token in _TERM_PATTERN.findall(line):
             normalized = token.lower()
             if normalized in _STOP_WORDS:
                 continue
