@@ -1,0 +1,13 @@
+README.md
+pyproject.toml
+src/schconv/__init__.py
+src/schconv/cli.py
+src/schconv/parser.py
+src/schconvtest.egg-info/PKG-INFO
+src/schconvtest.egg-info/SOURCES.txt
+src/schconvtest.egg-info/dependency_links.txt
+src/schconvtest.egg-info/entry_points.txt
+src/schconvtest.egg-info/requires.txt
+src/schconvtest.egg-info/top_level.txt
+tests/test_cli.py
+tests/test_parser.py

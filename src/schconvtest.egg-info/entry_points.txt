@@ -1,0 +1,2 @@
+[console_scripts]
+schconv = schconv.cli:main
